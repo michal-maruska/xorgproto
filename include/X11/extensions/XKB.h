@@ -57,6 +57,19 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #define	X_kbGetKbdByName		23
 #define	X_kbGetDeviceInfo		24
 #define	X_kbSetDeviceInfo		25
+
+/* MMC_PIPELINE */
+/* So we reserve these:
+   And the server should Bump the XKB version, when compiled with MMC_PIPELINE!
+*/
+#define	X_kbSetPlugin			27
+#define	X_kbPluginSetConfig             28
+#define	X_kbPluginGetConfig	        29
+#define	X_kbPluginCommand	        30
+#define	X_kbListPipeline		31
+
+
+
 #define	X_kbSetDebuggingFlags		101
 
     /*

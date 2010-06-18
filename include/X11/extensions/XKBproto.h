@@ -229,6 +229,110 @@ typedef struct _xkbSetControls {
 } xkbSetControlsReq;
 #define	sz_xkbSetControlsReq	100
 
+/* MMC_PIPELINE */
+
+typedef struct _xkbSetPlugin {
+   CARD8		reqType;
+   CARD8		xkbReqType;	/* always X_KBSetPlugin */
+   CARD16		length B16;     /* including the filename */
+
+   CARD16	        deviceSpec B16;
+   CARD8                before;
+   CARD8	        pad1;
+   char                 names[0]; /* should be CARD8? */
+} xkbSetPluginReq;
+#define	sz_xkbSetPluginReq	8 /* bytes, but the filename?! */
+
+
+typedef struct _xkbPluginConfig {
+   CARD8		reqType;
+   CARD8		xkbReqType;	/* always X_KBSetPlugin */
+   CARD16		length B16;
+   /* fixme:old   including the plugin name (which is terminated by 0! */
+
+   CARD16	        deviceSpec B16;
+   CARD16	        pad1;
+   CARD32            plugin_id;
+
+   CARD32            data0;
+   CARD32            data1;
+   CARD32            data2;
+   CARD32            data3;
+   CARD32            data4;
+} xkbPluginConfigReq;
+
+/* The 2 requests share this C struct. */
+typedef xkbPluginConfigReq xkbPluginGetConfigReq;
+typedef xkbPluginConfigReq xkbPluginSetConfigReq;
+#define	sz_xkbPluginSetConfigReq	32
+#define	sz_xkbPluginGetConfigReq	32
+
+
+/* command: */
+typedef xkbPluginConfigReq xkbPluginCommandReq;
+#define	sz_xkbPluginCommandReq	32 /* bytes, but the filename?! */
+
+
+/* todo: work-in-progress */
+typedef struct _XKBpluginReply {
+   CARD8	type;		/* always X_Reply */
+   CARD8	deviceID;
+   CARD16	sequenceNumber B16;
+   CARD32	length B32;
+   CARD32       subtype;
+
+   CARD32       plugin B32;     /* mmc: atom? */
+
+   CARD16 real_len B16;         /* the unpadded lenght! */
+   CARD16 pad1 B16;
+
+   /* when we return little data, we might use these 12 bytes:
+    * and subtype might be: short char*, 1 CARD32, 2 CARD32 and 3 CARD32! */
+   CARD32 data00 B32;
+   CARD32 data01 B32;
+   CARD32 data02 B32;
+} XKBpluginReply;
+
+/* the subtype: */
+enum
+{
+    XKB_PLUGIN_LONG,
+    XKB_PLUGIN_SHORT,
+    XKB_PLUGIN_1CARD,
+    XKB_PLUGIN_2CARDS,
+    XKB_PLUGIN_3CARDS,
+};
+
+#define	sz_XKBpluginReply	32 /* fixme: Not used! */
+
+typedef struct _xkbListPipeline {
+    CARD8	reqType;
+    CARD8	xkbReqType;	/* always X_KBListPipeline */
+    CARD16	length B16;
+    CARD16	deviceSpec B16;
+    CARD16	maxNames B16;   /* not used! Pad1 */
+} xkbListPipelineReq;
+#define	sz_xkbListPipelineReq	8
+
+typedef struct _xkbListPipelineReply {
+    CARD8	type;		/* always X_Reply */
+    CARD8	deviceID;
+    CARD16	sequenceNumber B16;
+    CARD32	length B32;
+
+    CARD16	nPlugins B16;
+    /* Not used:  */
+    CARD16	pad0 B16;
+    CARD32	pad1 B32;
+    CARD32	pad2 B32;
+    CARD32	pad3 B32;
+    CARD32	pad4 B32;
+    CARD32	pad5 B32;
+} xkbListPipelineReply;
+#define	sz_xkbListPipelineReply	32
+
+/* end MMC_PIPELINE */
+
 typedef	struct _xkbKTMapEntryWireDesc {
     BOOL	active;
     CARD8	mask;
