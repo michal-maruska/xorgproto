@@ -188,7 +188,11 @@ typedef struct _XkbSrvInfo {
 
 typedef struct	_XkbSrvLedInfo {
 	CARD16			flags;
+#ifdef __cplusplus
+        CARD16			cclass;
+#else
 	CARD16			class;
+#endif
 	CARD16			id;
 	union {
 	    KbdFeedbackPtr	kf;
