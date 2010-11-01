@@ -68,7 +68,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include <X11/extensions/XKBstr.h>
 #include <X11/extensions/XKBproto.h>
-#include "inputstr.h"
+#include <inputstr.h>
 
 typedef struct _XkbInterest {
 	DeviceIntPtr		dev;
