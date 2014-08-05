@@ -290,7 +290,7 @@ extern char *	XkbModelUsed,*XkbLayoutUsed,*XkbVariantUsed,*XkbOptionsUsed;
 extern Bool	noXkbExtension;
 extern Bool	XkbWantRulesProp;
 
-extern pointer	XkbLastRepeatEvent;
+extern void *	XkbLastRepeatEvent;
 
 extern CARD32	xkbDebugFlags;
 extern CARD32	xkbDebugCtrls;
@@ -332,7 +332,7 @@ extern	int	DeviceButtonPress,DeviceButtonRelease;
 #define	IsKeypadKey(s)		XkbKSIsKeypad(s)
 
 typedef int Status;
-typedef pointer XPointer;
+typedef void *XPointer;
 typedef struct _XDisplay Display;
 
 #ifndef True
@@ -711,7 +711,7 @@ extern	void XkbHandleBell(
        BOOL		/* eventOnly */,
        DeviceIntPtr	/* kbd */,
        CARD8		/* percent */,
-       pointer 		/* ctrl */,
+       char * 		/* ctrl */,
        CARD8		/* class */,
        Atom		/* name */,
        WindowPtr	/* pWin */,
