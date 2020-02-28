@@ -450,7 +450,7 @@ xf86rushprotopkgconfigdir = $(datadir)/pkgconfig
 xf86rushprotopkgconfig_DATA = xf86rushproto.pc
 endif
 
-SUBDIRS=specs
+# SUBDIRS=specs
 
 EXTRA_DIST = \
     COPYING-applewmproto \
