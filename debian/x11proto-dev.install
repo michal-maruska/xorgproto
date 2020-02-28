@@ -2,4 +2,4 @@ usr/include/GL/*
 usr/include/X11/*
 usr/share/pkgconfig/*.pc
 usr/share/doc/x11proto-dev/*.txt
-usr/share/doc/*proto/*.txt
+# usr/share/doc/*proto/*.txt
