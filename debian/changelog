@@ -1,3 +1,15 @@
+xorgproto (2023.2-1-maruska) unstable; urgency=medium
+
+  [ Michal Maruska ]
+  * requests for plugins
+  * Make the header files C++ friendly
+  * fix for Xserver compilation
+  * comment
+  * drop pointer type
+  * disable specs -- why?
+
+ --  <mmaruska@gmail.com>  Fri, 18 Aug 2023 13:33:00 +0200
+
 xorgproto (2023.2-1) unstable; urgency=medium
 
   * New upstream release.
